@@ -1,0 +1,102 @@
+<?php
+require_once("persistencia/Conexion.php");
+require_once("persistencia/ClienteDAO.php");
+require_once("logica/cliente.php");
+require_once("persistencia/estadoDAO.php");
+require_once("persistencia/planDAO.php");
+?>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+
+    <!-- Logo / Nombre del sistema -->
+    <a class="navbar-brand fw-bold" href="dashboard.php">
+      WEB MASTER
+    </a>
+
+    <!-- Botón responsive -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarGestion" aria-controls="navbarGestion"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenido -->
+    <div class="collapse navbar-collapse" id="navbarGestion">
+
+      <!-- Menú principal -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="dashboard.php">
+            <i class="fa-solid fa-gauge"></i> Dashboard
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="clientes.php">
+            <i class="fa-solid fa-users"></i> Clientes
+          </a>
+        </li>
+
+        <!-- Planes -->
+        <li class="nav-item">
+          <a class="nav-link" href="planes.php">
+            <i class="fa-solid fa-wifi"></i> Planes
+          </a>
+        </li>
+
+        <!-- Tickets -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-ticket"></i> Tickets
+          </a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="/web/presentacion/Cliente/crearInstalacion.php">
+                Activos
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="tickets_cortes.php">Cortes</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="tickets_retirados.php">Retirados</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Reportes -->
+        <li class="nav-item">
+          <a class="nav-link" href="reportes.php">
+            <i class="fa-solid fa-chart-line"></i> Reportes
+          </a>
+        </li>
+
+      </ul>
+
+      <!-- Usuario -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i> Admin
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item text-danger" href="logout.php">Cerrar sesión</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
