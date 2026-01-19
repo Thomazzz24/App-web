@@ -48,27 +48,34 @@ $clientes = $cliente->consultarActivos();
 
             <thead>
                 <tr>
+
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Identificación</th>
                     <th>Precio</th>
                     <th>Estado</th>
                     <th>dia corte</th>
-                    <th>Acciones</th>
-                    <th>Dirección</th>
-
+                    <th>acciones</th>
+                    <th>direccion</th>
+                    <th>telefono1</th>
+                    <th>telefono2</th>
                     <th>codigo</th>
+                    
 
                 </tr>
             </thead>
 
             <tbody>
+
                 <?php foreach ($clientes as $c) { ?>
+
                     <tr>
+
                         <td><?= $c->getNombre1() ?></td>
                         <td><?= $c->getApellido1() ?></td>
                         <td><?= $c->getIdentificacion() ?></td>
                         <td><?= $c->getValor() ?></td>
+                       
 
 
 
@@ -79,8 +86,13 @@ $clientes = $cliente->consultarActivos();
                                 : "<i class='fa-solid fa-x text-danger fs-4'></i>" ?>
                         </td>
 
+
+                       
+
                         <!-- CÓDIGO -->
                         <td><?= $c->getCodigo() ?></td>
+
+                  
 
 
                         <!-- ACCIONES -->
@@ -103,8 +115,14 @@ $clientes = $cliente->consultarActivos();
                                 </a>
                             <?php } ?>
                         </td>
+                        
                         <td><?= $c->getDia_corte() ?></td>
                         <td><?= $c->getDireccion() ?></td>
+
+
+                         <td><?= $c->getTelefono1() ?></td>
+                        <td><?= $c->getTelefono2() ?></td>
+                        
 
 
 

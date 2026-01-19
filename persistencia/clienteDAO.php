@@ -5,7 +5,7 @@ class ClienteDAO
     public function consultar()
     {
         return "
-        SELECT 
+       SELECT 
         
             c.id_cliente,
             c.nombre_1,
@@ -17,15 +17,18 @@ class ClienteDAO
             p.valor,
             c.dia_corte,
             c.direccion,
-                        CONCAT(ba.red, ba.prefijo, '0', c.num_cliente) AS codigo
+            c.telefono_1,
+            c.telefono_2,
+            
+           CONCAT(ba.red, ba.prefijo, '0', c.num_cliente) AS codigo
 
         FROM cliente c
         JOIN barrio ba ON ba.id_barrio = c.id_barrio
         JOIN estado_cliente ec ON ec.id_estado_cliente = c.id_estado_cliente
         JOIN plan p ON p.id_plan = c.id_plan
-    
-    WHERE c.id_estado_cliente IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)
-            ";
+
+    WHERE c.id_estado_cliente IN (1,2)
+             ";
     }
         public function consultarCortes()
     {

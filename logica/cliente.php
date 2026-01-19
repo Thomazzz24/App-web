@@ -20,6 +20,8 @@ class Cliente
     private $codigo;
     private $dia_corte;
     private $direccion;
+    private $telefono_1;
+    private $telefono_2;
 
     public function __construct(
         $id_cliente = 0,
@@ -32,8 +34,10 @@ class Cliente
         $id_plan = 0,
         $codigo = "",
         $dia_corte = "",
-        $direccion = ""
-    ) {
+        $direccion = "",
+        $telefono_1 = "",
+        $telefono_2 = ""
+            ) {
         $this->id_cliente = $id_cliente;
         $this->nombre_1 = $nombre_1;
         $this->nombre_2 = $nombre_2;
@@ -44,8 +48,29 @@ class Cliente
         $this->id_plan = $id_plan;
         $this->codigo = $codigo;
         $this->dia_corte = $dia_corte;
-        $this->direccion = $direccion;
+        $this->direccion = $direccion;    
+        $this->telefono_1 = $telefono_1;
+        $this->telefono_2 = $telefono_2;
     }
+    public function getTelefono1()
+    {
+        return $this->telefono_1;
+    }
+    public function setTelefono1($telefono_1)
+    {
+        $this->telefono_1 = $telefono_1;
+    }
+    public function getTelefono2()
+    {
+        return $this->telefono_2;
+    }
+    public function setTelefono2($telefono_2)
+    {
+        $this->telefono_2 = $telefono_2;
+    }
+
+
+
     public function getId_Cliente()
     {
         return $this->id_cliente;
@@ -180,7 +205,9 @@ class Cliente
                 $fila[7],
                 $fila[8],
                 $fila[9],
-                $fila[10]
+                $fila[10],
+                $fila[11],
+                $fila[12]
             );
         }
 
