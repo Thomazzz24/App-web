@@ -6,13 +6,35 @@ require_once("persistencia/estadoDAO.php");
 require_once("persistencia/planDAO.php");
 ?>
 
+<style>
+  .navbar-brand img {
+    transition: transform 0.2s ease;
+  }
+
+  .navbar-brand:hover img {
+    transform: scale(1.05);
+  }
+
+  .navbar-nav .nav-link {
+    font-weight: 500;
+  }
+
+  .navbar-nav .nav-link i {
+    margin-right: 5px;
+  }
+</style>
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container-fluid">
 
     <!-- Logo / Nombre del sistema -->
-    <a class="navbar-brand fw-bold" href="dashboard.php">
-      WEB MASTER
-    </a>
+   <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="dashboard.php">
+  <img src="img/LogoWeb.png"
+       alt="Logo Empresa"
+       style="height:40px;">
+</a>
+
 
     <!-- Botón responsive -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
