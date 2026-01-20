@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: autenticacion/login.php");
+    exit;
+}
 
 
 require_once("logica/Cliente.php");

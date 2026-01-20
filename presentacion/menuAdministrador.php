@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
 require_once("persistencia/Conexion.php");
 require_once("persistencia/ClienteDAO.php");
 require_once("logica/cliente.php");
@@ -25,15 +29,17 @@ require_once("persistencia/planDAO.php");
 </style>
 
 
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container-fluid">
 
     <!-- Logo / Nombre del sistema -->
-   <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="dashboard.php">
-  <img src="img/LogoWeb.png"
-       alt="Logo Empresa"
-       style="height:40px;">
-</a>
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="dashboard.php">
+      <img src="img/LogoWeb.png"
+        alt="Logo Empresa"
+        style="height:40px;">
+    </a>
 
 
     <!-- Botón responsive -->
@@ -101,21 +107,35 @@ require_once("persistencia/planDAO.php");
       </ul>
 
       <!-- Usuario -->
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-user"></i> Admin
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item text-danger" href="logout.php">Cerrar sesión</a></li>
-          </ul>
-        </li>
-      </ul>
+    <ul class="navbar-nav ms-auto">
+  <li class="nav-item dropdown">
+
+    <a class="nav-link dropdown-toggle" href="#" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-user"></i>
+      <?= $_SESSION['nombre'] ?? 'Usuario' ?>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-end">
+
+      <li class="px-3 py-2">
+        <div class="fw-bold">
+          <?= $_SESSION['nombre'] ?>
+        </div>
+        <small class="text-muted">
+          <?= $_SESSION['perfil'] ?>
+        </small>
+      </li>
+
+      <li><hr class="dropdown-divider"></li>
+
+      <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+      <li><a class="dropdown-item text-danger" href="autenticacion/logout.php">Cerrar sesión</a></li>
+
+    </ul>
+  </li>
+</ul>
+
 
     </div>
   </div>

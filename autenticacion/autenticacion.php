@@ -1,0 +1,41 @@
+<?php
+session_start();
+
+require_once("../persistencia/Conexion.php");
+require_once("../persistencia/UsuarioDAO.php");
+require_once("../logica/Usuario.php");
+
+$usuario = $_POST['usuario'] ?? '';
+$password = $_POST['password'] ?? '';
+
+$conexion = new Conexion();
+$dao = new UsuarioDAO();
+
+$conexion->abrir();
+$conexion->ejecutar($dao->login($usuario, $password));
+
+if ($conexion->filas() == 1) {
+
+    $fila = $conexion->registro();
+
+    $usuarioObj = new Usuario(
+        $fila[0], // id_usuario
+        $fila[1], // usuario_login
+        $fila[2], // nombre completo
+        $fila[3]  // perfil
+    );
+
+    $_SESSION['id_usuario'] = $usuarioObj->getId();
+    $_SESSION['usuario'] = $usuarioObj->getUsuario();
+    $_SESSION['nombre']  = $usuarioObj->getNombre();
+    $_SESSION['perfil']  = $usuarioObj->getPerfil();
+
+    $conexion->cerrar();
+    header("Location: ../index.php");
+    exit;
+
+} else {
+    $conexion->cerrar();
+    header("Location: ../presentacion/login.php?error=1");
+    exit;
+}
