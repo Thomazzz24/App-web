@@ -59,14 +59,16 @@ $clientes = $cliente->consultarActivos();
                     <th>Apellido</th>
                     <th>Identificación</th>
                     <th>Precio</th>
+                    <th>Codigo</th>
                     <th>Estado</th>
+                    <th>accion</th>
                     <th>dia corte</th>
-                    <th>acciones</th>
+                    <th>plan</th>
                     <th>direccion</th>
-                    <th>telefono1</th>
-                    <th>telefono2</th>
-                    <th>codigo</th>
-                    
+                    <th>telefono 1</th>
+                    <th>telefono 2</th>
+
+
 
                 </tr>
             </thead>
@@ -75,32 +77,21 @@ $clientes = $cliente->consultarActivos();
 
                 <?php foreach ($clientes as $c) { ?>
 
-                    <tr>
+                    <tr>    
 
                         <td><?= $c->getNombre1() ?></td>
                         <td><?= $c->getApellido1() ?></td>
                         <td><?= $c->getIdentificacion() ?></td>
                         <td><?= $c->getValor() ?></td>
-                       
-
-
-
+                            <!-- CÓDIGO -->
+                        <td><?= $c->getCodigo() ?></td>
                         <!-- ESTADO -->
                         <td class="text-center" id="estado-<?= $c->getId_Cliente() ?>">
                             <?= $c->getIdEstadoCliente() == 1
                                 ? "<i class='fa-solid fa-check text-success fs-4'></i>"
                                 : "<i class='fa-solid fa-x text-danger fs-4'></i>" ?>
                         </td>
-
-
-                       
-
-                        <!-- CÓDIGO -->
-                        <td><?= $c->getCodigo() ?></td>
-
-                  
-
-
+                    
                         <!-- ACCIONES -->
                         <td class="text-center">
                             <?php if ($c->getIdEstadoCliente() == 1) { ?>
@@ -121,18 +112,13 @@ $clientes = $cliente->consultarActivos();
                                 </a>
                             <?php } ?>
                         </td>
+
                         
                         <td><?= $c->getDia_corte() ?></td>
+                        <td><?= $c->getPlan() ?></td>
                         <td><?= $c->getDireccion() ?></td>
-
-
-                         <td><?= $c->getTelefono1() ?></td>
+                        <td><?= $c->getTelefono1() ?></td>
                         <td><?= $c->getTelefono2() ?></td>
-                        
-
-
-
-
                     </tr>
 
                 <?php } ?>

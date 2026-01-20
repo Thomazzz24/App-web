@@ -16,12 +16,14 @@ class Cliente
     private $apellido_2;
     private $identificacion;
     private $id_estado_cliente;
-    private $id_plan;
-    private $codigo;
+    private $plan1;
     private $dia_corte;
     private $direccion;
     private $telefono_1;
     private $telefono_2;
+    private $plan;
+private $valor;
+private $codigo;
 
     public function __construct(
         $id_cliente = 0,
@@ -31,13 +33,14 @@ class Cliente
         $apellido_2 = "",
         $identificacion = "",
         $id_estado_cliente = "",
-        $id_plan = 0,
-        $codigo = "",
+        $plan = "",
+        $valor = 0,
         $dia_corte = "",
         $direccion = "",
         $telefono_1 = "",
-        $telefono_2 = ""
-            ) {
+        $telefono_2 = "",
+        $codigo = ""
+    ) {
         $this->id_cliente = $id_cliente;
         $this->nombre_1 = $nombre_1;
         $this->nombre_2 = $nombre_2;
@@ -45,12 +48,33 @@ class Cliente
         $this->apellido_2 = $apellido_2;
         $this->identificacion = $identificacion;
         $this->id_estado_cliente = $id_estado_cliente;
-        $this->id_plan = $id_plan;
-        $this->codigo = $codigo;
+        $this->plan = $plan;
+        $this->valor = $valor;
         $this->dia_corte = $dia_corte;
-        $this->direccion = $direccion;    
+        $this->direccion = $direccion;
         $this->telefono_1 = $telefono_1;
         $this->telefono_2 = $telefono_2;
+        $this->codigo = $codigo;
+    }
+    public function getPlan()
+    {
+        return $this->plan;
+    }
+
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+
+    public function getPlan1()
+    {
+        return $this->plan1;
     }
     public function getTelefono1()
     {
@@ -109,7 +133,7 @@ class Cliente
     }
     public function getValorPlan()
     {
-        return $this->id_plan;
+        return $this->plan1;
     }
     public function getNombre2()
     {
@@ -123,15 +147,7 @@ class Cliente
     {
         return $this->id_estado_cliente;
     }
-    public function getValor()
-    {
-        return $this->id_plan;
-    }
-    public function getCodigo()
-    {
-        return $this->codigo;
-    }
-
+  
 
 
     public function setIdEstadoCliente($id_estado_cliente)
@@ -139,9 +155,9 @@ class Cliente
         $this->id_estado_cliente = $id_estado_cliente;
     }
 
-    public function setIdPlan($id_plan)
+    public function setplan1($plan1)
     {
-        $this->id_plan = $id_plan;
+        $this->plan1 = $plan1;
     }
 
     public function setIdentificacion($identificacion)
@@ -169,9 +185,9 @@ class Cliente
     {
         $this->id_cliente = $id_cliente;
     }
-    public function setValorPlan($id_plan)
+    public function setValorPlan($plan1)
     {
-        $this->id_plan = $id_plan;
+        $this->plan1 = $plan1;
     }
     public function setCodigo($codigo)
     {
@@ -207,14 +223,15 @@ class Cliente
                 $fila[9],
                 $fila[10],
                 $fila[11],
-                $fila[12]
+                $fila[12],
+                $fila[13]
             );
         }
 
         $conexion->cerrar();
         return $clientes;
     }
-        public function consultarCortes()
+    public function consultarCortes()
     {
         $conexion = new Conexion();
         $dao = new ClienteDAO();
