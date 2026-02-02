@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . "/Conexion.php");
+require_once(__DIR__ . "/conexion.php");
 class ClienteDAO
 {
     public function consultar()
@@ -28,10 +28,10 @@ class ClienteDAO
         JOIN estado_cliente ec ON ec.id_estado_cliente = c.id_estado_cliente
         JOIN plan p ON p.id_plan = c.id_plan
 
-    WHERE c.id_estado_cliente IN (1,2)
+    WHERE c.id_estado_cliente IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)
              ";
     }
-        public function consultarCortes()
+    public function consultarCortes()
     {
         return "
         SELECT 
@@ -80,30 +80,59 @@ class ClienteDAO
             WHERE id_cliente = $idCliente";
     }
 
-    public function insertar($cliente)
-    {
-        return "
-        INSERT INTO cliente (
-            nombre_1,
-            nombre_2,
-            apellido_1,
-            apellido_2,
-            identificacion,
-            id_estado_cliente,
-            id_plan,
-            dia_corte,
-            direccion
-        ) VALUES (
-            '{$cliente->getNombre1()}',
-            '{$cliente->getNombre2()}',
-            '{$cliente->getApellido1()}',
-            '{$cliente->getApellido2()}',
-            '{$cliente->getIdentificacion()}',
-            {$cliente->getIdEstadoCliente()},
-            {$cliente->getValor()},
-            '{$cliente->getDia_corte()}',
-            '{$cliente->getDireccion()}'
-        )
+public function insertar($c)
+{
+    return "
+    INSERT INTO cliente (
+        id_ciudad,
+        id_barrio,
+        red,
+        num_cliente,
+        id_estado_cliente,
+        id_plan,
+        id_tipo_identificacion,
+        identificacion,
+        exp_doc,
+        nombre_1,
+        nombre_2,
+        apellido_1,
+        apellido_2,
+        telefono_1,
+        telefono_2,
+        correo,
+        direccion,
+        fecha_instalacion,
+        dia_corte,
+        fecha_creacion,
+        id_usuario
+    )
+    SELECT
+        {$c->getIdCiudad()},
+        {$c->getIdBarrio()},
+        '{$c->getRed()}',
+        IFNULL(MAX(num_cliente), 0) + 1,
+        {$c->getIdEstadoCliente()},
+        {$c->getIdPlan()},
+        {$c->getIdTipoIdentificacion()},
+        '{$c->getIdentificacion()}',
+        '{$c->getExpDoc()}',
+        '{$c->getNombre1()}',
+        '{$c->getNombre2()}',
+        '{$c->getApellido1()}',
+        '{$c->getApellido2()}',
+        '{$c->getTelefono1()}',
+        '{$c->getTelefono2()}',
+        '{$c->getCorreo()}',
+        '{$c->getDireccion()}',
+        '{$c->getFechaInstalacion()}',
+        {$c->getDia_corte()},
+        NOW(),
+        {$c->getIdUsuario()}
+    FROM cliente
+    WHERE id_barrio = {$c->getIdBarrio()}
     ";
-    }
+}
+
+
+
 }

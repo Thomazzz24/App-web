@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("persistencia/Conexion.php");
+require_once("persistencia/conexion.php");
 require_once("persistencia/estadoDAO.php");
 class estadoDAO{
     public function consultarEstado(){

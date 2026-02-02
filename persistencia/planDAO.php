@@ -1,13 +1,14 @@
 <?php
+class PlanDAO {
 
-require_once("persistencia/Conexion.php");
-
-class planDAO
-{
-    public function consultarPlanes()
-    {
-        return "SELECT id_plan, nombre_plan, valor FROM plan";
+    public function consultar() {
+        return "
+            SELECT 
+                id_plan,
+                CONCAT(cantidad,'M ',obs) AS nombre,
+                valor
+            FROM plan
+            ORDER BY cantidad
+        ";
     }
 }
-
-?>

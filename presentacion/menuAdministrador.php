@@ -3,8 +3,8 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-require_once("persistencia/Conexion.php");
-require_once("persistencia/ClienteDAO.php");
+require_once("persistencia/conexion.php");
+require_once("persistencia/clienteDAO.php");
 require_once("logica/cliente.php");
 require_once("persistencia/estadoDAO.php");
 require_once("persistencia/planDAO.php");
@@ -107,38 +107,42 @@ require_once("persistencia/planDAO.php");
       </ul>
 
       <!-- Usuario -->
-    <ul class="navbar-nav ms-auto">
-  <li class="nav-item dropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
 
-    <a class="nav-link dropdown-toggle" href="#" role="button"
-      data-bs-toggle="dropdown" aria-expanded="false">
-      <i class="fa-solid fa-user"></i>
-      <?= $_SESSION['nombre'] ?? 'Usuario' ?>
-    </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i>
+            <?= $_SESSION['nombre'] ?? 'Usuario' ?>
+          </a>
 
-    <ul class="dropdown-menu dropdown-menu-end">
+          <ul class="dropdown-menu dropdown-menu-end">
 
-      <li class="px-3 py-2">
-        <div class="fw-bold">
-          <?= $_SESSION['nombre'] ?>
-        </div>
-        <small class="text-muted">
-          <?= $_SESSION['perfil'] ?>
-        </small>
-      </li>
+            <li class="px-3 py-2">
+              <div class="fw-bold">
+                <?= $_SESSION['nombre'] ?>
+              </div>
+              <small class="text-muted">
+                <?= $_SESSION['perfil'] ?>
+              </small>
+            </li>
 
-      <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
 
-      <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
-      <li><a class="dropdown-item text-danger" href="autenticacion/logout.php">Cerrar sesión</a></li>
+            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item text-danger" href="autenticacion/logout.php">Cerrar sesión</a></li>
 
-    </ul>
-  </li>
-</ul>
+          </ul>
+        </li>
+      </ul>
 
 
     </div>
   </div>
 </nav>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

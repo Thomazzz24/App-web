@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-require_once("../persistencia/Conexion.php");
-require_once("../persistencia/UsuarioDAO.php");
-require_once("../logica/Usuario.php");
+
+require_once(__DIR__ . "/../persistencia/Conexion.php");
+require_once(__DIR__ . "/../persistencia/UsuarioDAO.php");
+require_once(__DIR__ . "/../logica/Usuario.php");
+
 
 $usuario = $_POST['usuario'] ?? '';
 $password = $_POST['password'] ?? '';
@@ -15,6 +17,7 @@ $conexion->abrir();
 $conexion->ejecutar($dao->login($usuario, $password));
 
 if ($conexion->filas() == 1) {
+    
 
     $fila = $conexion->registro();
 

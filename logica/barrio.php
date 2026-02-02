@@ -51,4 +51,14 @@ class barrio
     {
         $this->red = $red;
     }
+    
+    public function consultarPorCiudad($id_ciudad) {
+        
+    $conexion = new Conexion();
+            $conexion->abrir();
+    return $conexion->ejecutar(
+        "SELECT id_barrio, barrio FROM barrio WHERE id_ciudad = $id_ciudad ORDER BY barrio"
+    );
+}
+
 }
